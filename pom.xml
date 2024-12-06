@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>uz.developers</groupId>
+    <artifactId>spring-cloud</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>api-gateway</module>
+        <module>config-server</module>
+        <module>registry-service</module>
+        <module>user-service</module>
+        <module>course-service</module>
+        <module>payment-service</module>
+
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Umumiy versiyalar va bog'lanishlarni o'rnatish -->
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- Pluginlar, masalan, Spring Boot pluginlarini o'rnatish -->
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
