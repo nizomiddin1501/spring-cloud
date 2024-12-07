@@ -59,24 +59,22 @@ class PaymentController(
         ApiResponse(responseCode = "400", description = "Invalid request data"))
     @PostMapping
     fun createPayment(
-        @RequestBody @Valid request: PaymentCreateRequest,
-        @RequestHeader("userId") userId: Long,
-        @RequestParam courseId: Long): PaymentResponse {
-        return paymentService.create(request, userId, courseId)
+        @RequestBody @Valid request: PaymentCreateRequest, ): PaymentResponse {
+        return paymentService.create(request)
     }
 
 
-    @Operation(summary = "Update existing payment", description = "Updates an existing payment based on the provided ID.")
-    @ApiResponses(
-        ApiResponse(responseCode = "200", description = "Payment successfully updated"),
-        ApiResponse(responseCode = "404", description = "Payment not found"),
-        ApiResponse(responseCode = "400", description = "Invalid request data"))
-    @PutMapping("{id}")
-    fun updatePayment(
-        @PathVariable id: Long,
-        @RequestBody @Valid request: PaymentUpdateRequest): PaymentResponse {
-        return paymentService.update(id, request)
-    }
+//    @Operation(summary = "Update existing payment", description = "Updates an existing payment based on the provided ID.")
+//    @ApiResponses(
+//        ApiResponse(responseCode = "200", description = "Payment successfully updated"),
+//        ApiResponse(responseCode = "404", description = "Payment not found"),
+//        ApiResponse(responseCode = "400", description = "Invalid request data"))
+//    @PutMapping("{id}")
+//    fun updatePayment(
+//        @PathVariable id: Long,
+//        @RequestBody @Valid request: PaymentUpdateRequest): PaymentResponse {
+//        return paymentService.update(id, request)
+//    }
 
 
     @Operation(summary = "Get all payments by user ID", description = "Retrieves all payments made by a specific user.")

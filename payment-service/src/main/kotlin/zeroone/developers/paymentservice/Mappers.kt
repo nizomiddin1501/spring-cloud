@@ -2,80 +2,6 @@ package zeroone.developers.paymentservice
 
 import org.springframework.stereotype.Component
 
-@Component
-class UserMapper {
-    fun toDto(user: User): UserResponse {
-        return user.run {
-            UserResponse(
-                id = this.id,
-                username = this.username,
-                password = this.password,
-                role = this.role,
-                balance = this.balance
-            )
-        }
-    }
-
-    fun toEntity(createRequest: UserCreateRequest): User {
-        return createRequest.run {
-            User(
-                username = this.username,
-                password = this.password,
-                role = this.role,
-                balance = this.balance
-            )
-        }
-    }
-
-    fun updateEntity(user: User, updateRequest: UserUpdateRequest): User {
-        return updateRequest.run {
-            user.apply {
-                updateRequest.username.let { this.username = it }
-                updateRequest.password.let { this.password = it }
-                updateRequest.role.let { this.role = it }
-                updateRequest.balance.let { this.balance = it }
-            }
-        }
-    }
-}
-
-
-@Component
-class CourseMapper {
-
-    fun toDto(course: Course): CourseResponse {
-        return course.run {
-            CourseResponse(
-                id = this.id,
-                name = this.name,
-                description = this.description,
-                price = this.price
-            )
-        }
-    }
-
-    fun toEntity(createRequest: CourseCreateRequest): Course {
-        return createRequest.run {
-            Course(
-                name = this.name,
-                description = this.description,
-                price = this.price
-            )
-        }
-    }
-
-    fun updateEntity(course: Course, updateRequest: CourseUpdateRequest): Course {
-        return updateRequest.run {
-            course.apply {
-                updateRequest.name.let { this.name = it }
-                updateRequest.description.let { this.description = it }
-                updateRequest.price.let { this.price = it }
-            }
-        }
-    }
-}
-
-
 
 @Component
 class PaymentMapper {
@@ -84,6 +10,8 @@ class PaymentMapper {
         return payment.run {
             PaymentResponse(
                 id = this.id,
+                userId = this.userId,
+                courseId = this.courseId,
                 amount = this.amount,
                 paymentDate = this.paymentDate,
                 paymentMethod = this.paymentMethod,
@@ -97,6 +25,8 @@ class PaymentMapper {
     fun toEntity(createRequest: PaymentCreateRequest): Payment {
         return createRequest.run {
             Payment(
+                userId = this.userId,
+                courseId = this.courseId,
                 amount = this.amount,
                 paymentDate = this.paymentDate,
                 paymentMethod = this.paymentMethod,

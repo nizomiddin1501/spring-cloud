@@ -6,7 +6,7 @@ spring:
     name: api-gateway
   cloud:
     config:
-      enabled: false  # Config Server ga ulanishni vaqtincha o'chirish
+      enabled: false
 
 eureka:
   client:
@@ -23,11 +23,11 @@ management:
         - id: user-service
           uri: lb://user-service
           predicates:
-            - Path=/api/users/**
+            - Path=/api/users/
         - id: course-service
           uri: lb://course-service
           predicates:
-            - Path=/api/courses/**
+            - Path=/api/courses/
         - id: payment-service
           uri: lb://payment-service
           predicates:

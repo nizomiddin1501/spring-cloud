@@ -68,7 +68,7 @@ class CourseServiceImpl(
     override fun update(id: Long, request: CourseUpdateRequest, userId: Long) {
         checkAdminRole(userId)
         val course = courseRepository.findByIdAndDeletedFalse(id) ?: throw CourseNotFoundException()
-        courseRepository.findByName(request.name)?.let { throw CourseAlreadyExistsException() }
+        //courseRepository.findByName(request.name)?.let { throw CourseAlreadyExistsException() }
         val updateCourse = courseMapper.updateEntity(course, request)
         courseRepository.save(updateCourse)
     }
@@ -88,12 +88,14 @@ class CourseServiceImpl(
             throw InsufficientBalanceException()
         }
         val paymentCreateRequest = PaymentCreateRequest(
+            userId = userId,
+            courseId = courseId,
             amount = courseResponse.price,
             paymentDate = LocalDateTime.now(),
             paymentMethod = PaymentMethod.CREDIT_CARD,
             status = Status.SUCCESS
         )
-        return paymentService.create(paymentCreateRequest, userId, courseId)
+        return paymentService.create(paymentCreateRequest)
     }
 
     override fun delete(id: Long, userId: Long) {

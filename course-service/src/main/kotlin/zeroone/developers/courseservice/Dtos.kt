@@ -116,6 +116,12 @@ data class CourseUpdateRequest(
 @Schema(description = "Data transfer object for Payment createRequest")
 data class PaymentCreateRequest(
 
+    @Schema(description = "User ID", example = "1")
+    var userId: Long,
+
+    @Schema(description = "Course ID", example = "3")
+    var courseId: Long,
+
     @Schema(description = "Amount paid", example = "150.00")
     var amount: BigDecimal,
 
@@ -136,6 +142,12 @@ data class PaymentResponse(
 
     @Schema(description = "Payment ID", example = "1")
     val id: Long?,
+
+    @Schema(description = "User ID", example = "1")
+    var userId: Long,
+
+    @Schema(description = "Course ID", example = "3")
+    var courseId: Long,
 
     @Schema(description = "Amount paid", example = "150.00")
     var amount: BigDecimal?,

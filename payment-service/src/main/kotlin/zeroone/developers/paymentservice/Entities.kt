@@ -28,58 +28,66 @@ open class BaseEntity(
 )
 
 
-@NoArgsConstructor
-@Table
-@Entity(name = "users")
-@Schema(description = "User information")
-class User(
-
-    @Column(unique = true, nullable = false)
-    @Schema(description = "Unique username", example = "nizomiddin097")
-    var username: String,
-
-    @Column(nullable = false)
-    @Schema(description = "User's password", example = "root123")
-    var password: String,
-
-    @Schema(description = "User role", example = "USER")
-    @Enumerated(EnumType.STRING)
-    var role: UserRole = UserRole.USER,
-
-    @Schema(description = "User balance", example = "100.0")
-    var balance: BigDecimal
-) : BaseEntity()
-//{
-//    constructor() : this("", "", UserRole.USER, BigDecimal.ZERO)
-//}
-
-
-@Table
-@Entity(name = "course")
-@Schema(description = "Payment details")
-class Course(
-
-    @Column(nullable = false)
-    @Schema(description = "Course name", example = "Kotlin Programming")
-    var name: String,
-
-    @Column(nullable = false)
-    @Schema(description = "Course description", example = "A complete guide to Kotlin programming language")
-    var description: String,
-
-    @Column(nullable = false)
-    @Schema(description = "Course price", example = "150.0")
-    var price: BigDecimal
-) : BaseEntity()
-//{
-//    constructor() : this("", "", BigDecimal.ZERO)
-//}
+//@NoArgsConstructor
+//@Table
+//@Entity(name = "users")
+//@Schema(description = "User information")
+//class User(
+//
+//    @Column(unique = true, nullable = false)
+//    @Schema(description = "Unique username", example = "nizomiddin097")
+//    var username: String,
+//
+//    @Column(nullable = false)
+//    @Schema(description = "User's password", example = "root123")
+//    var password: String,
+//
+//    @Schema(description = "User role", example = "USER")
+//    @Enumerated(EnumType.STRING)
+//    var role: UserRole = UserRole.USER,
+//
+//    @Schema(description = "User balance", example = "100.0")
+//    var balance: BigDecimal
+//) : BaseEntity()
+////{
+////    constructor() : this("", "", UserRole.USER, BigDecimal.ZERO)
+////}
+//
+//
+//@Table
+//@Entity(name = "course")
+//@Schema(description = "Payment details")
+//class Course(
+//
+//    @Column(nullable = false)
+//    @Schema(description = "Course name", example = "Kotlin Programming")
+//    var name: String,
+//
+//    @Column(nullable = false)
+//    @Schema(description = "Course description", example = "A complete guide to Kotlin programming language")
+//    var description: String,
+//
+//    @Column(nullable = false)
+//    @Schema(description = "Course price", example = "150.0")
+//    var price: BigDecimal
+//) : BaseEntity()
+////{
+////    constructor() : this("", "", BigDecimal.ZERO)
+////}
 
 
 @Table
 @Entity(name = "payments")
 @Schema(description = "Payment details")
 class Payment(
+
+    @Column(nullable = false)
+    @Schema(description = "User ID", example = "1")
+    var userId: Long,
+
+    @Column(nullable = false)
+    @Schema(description = "Course ID", example = "3")
+    var courseId: Long,
 
     @Column(nullable = false)
     @Schema(description = "Amount paid", example = "150.00")

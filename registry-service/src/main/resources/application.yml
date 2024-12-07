@@ -1,11 +1,10 @@
+spring:
+  application:
+    name: registry-service
+  cloud:
+    config:
+      uri: http://localhost:8888
+      password: nizomiddin
+      username: developer
 server:
   port: 8761
-
-spring:
-  instance:
-    hostname: localhost
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

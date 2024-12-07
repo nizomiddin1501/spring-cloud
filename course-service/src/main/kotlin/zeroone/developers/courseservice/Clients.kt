@@ -35,9 +35,7 @@ interface PaymentService {
 
     @PostMapping
     fun create(
-        @RequestBody @Valid request: PaymentCreateRequest,
-        @RequestHeader("userId") userId: Long,
-        @RequestParam courseId: Long): PaymentResponse
+        @RequestBody @Valid request: PaymentCreateRequest): PaymentResponse
 
 }
 

@@ -65,8 +65,8 @@ class BaseRepositoryImpl<T : BaseEntity>(
 @Repository
 interface CourseRepository : BaseRepository<Course> {
 
-    @Query(value = "select * from course where name = :name and deleted = false limit 1", nativeQuery = true)
-    fun findByName(@Param("name") name: String): Course?
+//    @Query(value = "select * from course where name = :name and deleted = false limit 1", nativeQuery = true)
+//    fun findByName(@Param("name") name: String): Course?
 
     fun findByNameAndDeletedFalse(name: String): Course?
 
