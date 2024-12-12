@@ -1,9 +1,8 @@
 package zeroone.developers.paymentservice
-
 import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.context.support.ResourceBundleMessageSource
 
-sealed class BillingExceptionHandler() : RuntimeException() {
+sealed class PaymentExceptionHandler() : RuntimeException() {
     abstract fun errorCode(): ErrorCodes
     open fun getArguments(): Array<Any?>? = null
 
@@ -19,69 +18,69 @@ sealed class BillingExceptionHandler() : RuntimeException() {
     }
 }
 
-class UserAlreadyExistsException : BillingExceptionHandler() {
+class UserAlreadyExistsException : PaymentExceptionHandler() {
     override fun errorCode(): ErrorCodes {
         return ErrorCodes.USER_ALREADY_EXISTS
     }
 }
 
-class UserNotFoundException : BillingExceptionHandler() {
+class UserNotFoundException : PaymentExceptionHandler() {
     override fun errorCode(): ErrorCodes {
         return ErrorCodes.USER_NOT_FOUND
     }
 }
 
-class CourseAlreadyExistsException : BillingExceptionHandler() {
+class CourseAlreadyExistsException : PaymentExceptionHandler() {
     override fun errorCode(): ErrorCodes {
         return ErrorCodes.COURSE_ALREADY_EXISTS
     }
 }
 
-class CourseNotFoundException : BillingExceptionHandler() {
+class CourseNotFoundException : PaymentExceptionHandler() {
     override fun errorCode(): ErrorCodes {
         return ErrorCodes.COURSE_NOT_FOUND
     }
 }
 
 
-class PaymentAlreadyExistsException : BillingExceptionHandler() {
+class PaymentAlreadyExistsException : PaymentExceptionHandler() {
     override fun errorCode(): ErrorCodes {
         return ErrorCodes.PAYMENT_ALREADY_EXISTS
     }
 }
 
-class PaymentNotFoundException : BillingExceptionHandler() {
+class PaymentNotFoundException : PaymentExceptionHandler() {
     override fun errorCode(): ErrorCodes {
         return ErrorCodes.PAYMENT_NOT_FOUND
     }
 }
 
 
-class UserAccessDeniedException : BillingExceptionHandler() {
+class UserAccessDeniedException : PaymentExceptionHandler() {
     override fun errorCode(): ErrorCodes {
         return ErrorCodes.ROLE_ACCESS_DENIED
     }
 }
 
-class CannotCancelOrderException : BillingExceptionHandler() {
+class CannotCancelOrderException : PaymentExceptionHandler() {
     override fun errorCode(): ErrorCodes {
         return ErrorCodes.CANNOT_CANCEL_ORDER
     }
 }
 
-class InvalidOrderStatusException : BillingExceptionHandler() {
+class InvalidOrderStatusException : PaymentExceptionHandler() {
     override fun errorCode(): ErrorCodes {
         return ErrorCodes.INVALID_ORDER_STATUS
     }
 }
 
-class InvalidPaymentMethodException : BillingExceptionHandler() {
+class InvalidPaymentMethodException : PaymentExceptionHandler() {
     override fun errorCode(): ErrorCodes {
         return ErrorCodes.PAYMENT_METHOD_NOT_FOUND
     }
 }
 
-class InsufficientBalanceException : BillingExceptionHandler() {
+class InsufficientBalanceException : PaymentExceptionHandler() {
     override fun errorCode(): ErrorCodes {
         return ErrorCodes.INSUFFICIENT_BALANCE
     }

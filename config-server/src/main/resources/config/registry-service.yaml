@@ -2,7 +2,7 @@ server:
   port: 8085
 spring:
   application:
-    name: api-gateway
+    name: registry-service
 
 eureka:
   client:

@@ -1,5 +1,4 @@
 package zeroone.developers.paymentservice
-
 import io.swagger.v3.oas.annotations.media.Schema
 import jakarta.annotation.Nonnull
 import jakarta.persistence.*
@@ -7,7 +6,6 @@ import java.math.BigDecimal
 import java.time.LocalDateTime
 
 data class BaseMessage(val code : Int, val message : String?)
-
 
 @Schema(description = "Data transfer object for User createRequest")
 data class UserCreateRequest(

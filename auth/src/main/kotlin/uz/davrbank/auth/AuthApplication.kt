@@ -1,4 +1,4 @@
-package zeroone.developers.auth
+package uz.davrbank.auth
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

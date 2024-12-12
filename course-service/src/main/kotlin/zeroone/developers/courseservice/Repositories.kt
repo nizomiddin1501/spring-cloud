@@ -12,14 +12,8 @@ import org.springframework.data.jpa.repository.support.JpaEntityInformation
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository
 import org.springframework.data.repository.NoRepositoryBean
 import org.springframework.data.repository.findByIdOrNull
-import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
-import zeroone.developers.courseservice.BaseEntity
-import zeroone.developers.courseservice.Course
-import zeroone.developers.courseservice.Payment
-import zeroone.developers.courseservice.User
 import java.math.BigDecimal
-import java.util.*
 
 @NoRepositoryBean
 interface BaseRepository<T : BaseEntity> : JpaRepository<T, Long>, JpaSpecificationExecutor<T> {
@@ -59,7 +53,6 @@ class BaseRepositoryImpl<T : BaseEntity>(
         return save(t).apply { entityManager.refresh(this) }
     }
 }
-
 
 
 @Repository

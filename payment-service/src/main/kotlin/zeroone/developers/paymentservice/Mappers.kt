@@ -1,7 +1,5 @@
 package zeroone.developers.paymentservice
-
 import org.springframework.stereotype.Component
-
 
 @Component
 class PaymentMapper {

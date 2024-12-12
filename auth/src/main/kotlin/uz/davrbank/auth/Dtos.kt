@@ -1,5 +1,5 @@
 package uz.davrbank.auth
-
+import java.io.Serializable
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
@@ -36,7 +36,7 @@ data class UserAuthDto(
 }
 
 
-class CustomUserDetails(val userDto: UserAuthDto) : UserDetails, Serializable {
+class CustomUserDetails(val userDto: UserAuthDto) : UserDetails, java.io.Serializable {
     override fun getAuthorities() = userDto.getAuthorities()
     override fun isEnabled() = userDto.status == UserStatus.ACTIVE
     override fun getUsername() = userDto.username

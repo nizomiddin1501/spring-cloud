@@ -1,12 +1,11 @@
 package zeroone.developers.courseservice
-
+import jakarta.transaction.Transactional
 import org.springframework.context.annotation.Lazy
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
-
 
 
 interface CourseService {
@@ -20,9 +19,6 @@ interface CourseService {
     fun purchaseCourse(userId: Long, courseId: Long): PaymentResponse
     fun delete(id: Long, userId: Long)
 }
-
-
-
 
 
 @Service
@@ -93,11 +89,11 @@ class CourseServiceImpl(
             amount = courseResponse.price,
             paymentDate = LocalDateTime.now(),
             paymentMethod = PaymentMethod.CREDIT_CARD,
-            status = Status.SUCCESS
-        )
+            status = Status.SUCCESS)
         return paymentService.create(paymentCreateRequest)
     }
 
+    @Transactional
     override fun delete(id: Long, userId: Long) {
         checkAdminRole(userId)
         courseRepository.trash(id) ?: throw CourseNotFoundException()

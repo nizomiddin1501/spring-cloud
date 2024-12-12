@@ -1,10 +1,8 @@
 package zeroone.developers.paymentservice
 
-
 enum class UserRole {
     ADMIN, USER
 }
-
 
 enum class Status {
     PENDING, SUCCESS, FAILED

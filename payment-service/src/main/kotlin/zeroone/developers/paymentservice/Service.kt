@@ -1,8 +1,6 @@
 package zeroone.developers.paymentservice
-
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
-import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import java.math.BigDecimal
 
@@ -10,13 +8,9 @@ interface PaymentService {
     fun getAll(page: Int, size: Int): Page<PaymentResponse>
     fun getOne(id: Long): PaymentResponse
     fun create(request: PaymentCreateRequest): PaymentResponse
-    //fun update(id: Long, request: PaymentUpdateRequest): PaymentResponse
     fun getPaymentsByUserId(userId: Long): List<PaymentResponse>
     fun getPaymentStats(): PaymentStatsResponse
 }
-
-
-
 
 @Service
 class PaymentServiceImpl(
@@ -46,14 +40,6 @@ class PaymentServiceImpl(
         val savedPayment = paymentRepository.save(payment)
         return paymentMapper.toDto(savedPayment, userResponse.username, courseResponse.name)
     }
-
-//    override fun update(id: Long, request: PaymentUpdateRequest): PaymentResponse {
-//        val payment = paymentRepository.findById(id)
-//            .orElseThrow { PaymentNotFoundException() }
-//        val updatedPayment = paymentMapper.updateEntity(payment, request)
-//        val savedPayment = paymentRepository.save(updatedPayment)
-//        return paymentMapper.toDto(savedPayment)
-//    }
 
 
     // Get all paymenmvn ts by user ID

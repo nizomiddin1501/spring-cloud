@@ -22,7 +22,7 @@ class ExceptionHandler(private val errorMessageSource: ResourceBundleMessageSour
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/courses")
+@RequestMapping("/api/v1/courses")
 class CourseController(val service: CourseService) {
 
 

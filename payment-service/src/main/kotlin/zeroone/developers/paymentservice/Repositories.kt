@@ -1,5 +1,4 @@
 package zeroone.developers.paymentservice
-
 import jakarta.persistence.EntityManager
 import jakarta.transaction.Transactional
 import org.springframework.data.domain.Page
@@ -7,16 +6,13 @@ import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.domain.Specification
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor
-import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.jpa.repository.support.JpaEntityInformation
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository
 import org.springframework.data.repository.NoRepositoryBean
 import org.springframework.data.repository.findByIdOrNull
-import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
 import java.math.BigDecimal
-import java.util.*
 
 @NoRepositoryBean
 interface BaseRepository<T : BaseEntity> : JpaRepository<T, Long>, JpaSpecificationExecutor<T> {
@@ -60,7 +56,6 @@ class BaseRepositoryImpl<T : BaseEntity>(
 
 
 
-
 @Repository
 interface PaymentRepository : BaseRepository<Payment> {
 
@@ -69,15 +64,6 @@ interface PaymentRepository : BaseRepository<Payment> {
     @Query(value = "select sum(amount) from payment where deleted = false", nativeQuery = true)
     fun sumAmountPaid(): BigDecimal?
 
-
 }
-
-
-
-
-
-
-
-
 
 

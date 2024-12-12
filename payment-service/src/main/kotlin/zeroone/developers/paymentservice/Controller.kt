@@ -10,12 +10,11 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.bind.annotation.ExceptionHandler
 
-
 @ControllerAdvice
 class ExceptionHandler(private val errorMessageSource: ResourceBundleMessageSource) {
 
-    @ExceptionHandler(BillingExceptionHandler::class)
-    fun handleAccountException(exception: BillingExceptionHandler): ResponseEntity<BaseMessage> {
+    @ExceptionHandler(PaymentExceptionHandler::class)
+    fun handleAccountException(exception: PaymentExceptionHandler): ResponseEntity<BaseMessage> {
         return ResponseEntity.badRequest().body(exception.getErrorMessage(errorMessageSource))
     }
 }
@@ -62,19 +61,6 @@ class PaymentController(
         @RequestBody @Valid request: PaymentCreateRequest, ): PaymentResponse {
         return paymentService.create(request)
     }
-
-
-//    @Operation(summary = "Update existing payment", description = "Updates an existing payment based on the provided ID.")
-//    @ApiResponses(
-//        ApiResponse(responseCode = "200", description = "Payment successfully updated"),
-//        ApiResponse(responseCode = "404", description = "Payment not found"),
-//        ApiResponse(responseCode = "400", description = "Invalid request data"))
-//    @PutMapping("{id}")
-//    fun updatePayment(
-//        @PathVariable id: Long,
-//        @RequestBody @Valid request: PaymentUpdateRequest): PaymentResponse {
-//        return paymentService.update(id, request)
-//    }
 
 
     @Operation(summary = "Get all payments by user ID", description = "Retrieves all payments made by a specific user.")

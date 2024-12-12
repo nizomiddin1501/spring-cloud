@@ -5,7 +5,7 @@ spring:
     config:
       uri: http://localhost:8888
       fail-fast: true
-      password: zero-one
+      password: nizomiddin
       username: user
   profiles:
     #    active: local
